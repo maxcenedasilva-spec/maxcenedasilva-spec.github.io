@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maxcene Da Silva | Junior Data Analyst</title>
+  <meta name="description" content="Portfolio of Maxcene Da Silva, a remote Junior Data Analyst specialising in reporting, trend analysis and turning data into actionable insights." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===== Colours: change these to restyle the whole site ===== */
+    :root {
+      --bg: #0B1120;
+      --bg-2: #111A2E;
+      --card: #141F36;
+      --line: #22304D;
+      --text: #E8EDF7;
+      --muted: #94A3BF;
+      --accent: #F2B544;
+      --accent-2: #FCD98A;
+      --accent-ink: #2A1C02;
+      --sans: "Manrope", system-ui, sans-serif;
+      --mono: "JetBrains Mono", ui-monospace, monospace;
+      --max: 1120px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    section { padding: 110px 0; }
+
+    /* ===== Reusable bits ===== */
+    .label { font-family: var(--mono); font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+    .h2 { font-size: clamp(32px, 4.5vw, 46px); font-weight: 800; line-height: 1.1; letter-spacing: -0.025em; margin-top: 12px; }
+    .lead { color: var(--muted); font-size: 17px; max-width: 560px; margin-top: 14px; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 15px 26px; border-radius: 12px; font-weight: 700; font-size: 15px; border: 1px solid transparent; transition: transform .2s, background .2s, border-color .2s; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--accent); color: var(--accent-ink); }
+    .btn-primary:hover { background: #F7C866; }
+    .btn-ghost { border-color: var(--line); background: var(--bg-2); }
+    .btn-ghost:hover { border-color: var(--accent); }
+    .gradient { background: linear-gradient(90deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+    /* ===== Nav ===== */
+    nav { position: sticky; top: 0; z-index: 20; background: rgba(11,17,32,.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+    nav .container { display: flex; justify-content: space-between; align-items: center; height: 72px; }
+    .logo { font-weight: 800; font-size: 18px; letter-spacing: .02em; }
+    .logo span { color: var(--accent); }
+    .links { display: flex; gap: 32px; font-size: 15px; font-weight: 600; color: var(--muted); }
+    .links a:hover { color: var(--text); }
+
+    /* ===== Hero ===== */
+    .hero { padding: 90px 0 100px; position: relative; overflow: hidden; }
+    .hero::before { content: ""; position: absolute; width: 640px; height: 640px; right: -180px; top: -200px; background: radial-gradient(circle, rgba(242,181,68,.16), transparent 65%); pointer-events: none; }
+    .hero .container { display: grid; grid-template-columns: 1fr 380px; gap: 64px; align-items: center; position: relative; }
+    .badge { display: inline-flex; align-items: center; gap: 10px; padding: 7px 14px; border: 1px solid var(--line); background: var(--bg-2); border-radius: 999px; font-family: var(--mono); font-size: 12px; font-weight: 600; letter-spacing: .1em; color: var(--accent); }
+    .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px rgba(242,181,68,.2); }
+    .hero h1 { font-size: clamp(42px, 6.4vw, 72px); font-weight: 800; line-height: 1.03; letter-spacing: -0.035em; margin: 26px 0 22px; }
+    .hero .intro { font-size: 19px; color: var(--muted); max-width: 580px; }
+    .ctas { display: flex; gap: 14px; margin-top: 34px; flex-wrap: wrap; }
+    .facts { display: flex; gap: 36px; margin-top: 44px; flex-wrap: wrap; }
+    .facts small { display: block; font-family: var(--mono); font-size: 11px; letter-spacing: .12em; color: var(--muted); margin-bottom: 2px; }
+    .facts strong { font-weight: 700; }
+    .photo { position: relative; }
+    .photo img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 20%; border-radius: 24px; border: 1px solid var(--line); }
+    .photo .kpi { position: absolute; left: -28px; bottom: 32px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 14px 18px; box-shadow: 0 20px 40px rgba(0,0,0,.35); }
+    .kpi b { font-size: 26px; font-weight: 800; color: var(--accent); display: block; line-height: 1.1; }
+    .kpi span { font-size: 13px; color: var(--muted); }
+
+    /* ===== About ===== */
+    .about { background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 64px; }
+    .about p { color: var(--muted); font-size: 17px; margin-top: 18px; }
+    .about p strong { color: var(--text); font-weight: 600; }
+    .stack-card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 32px; }
+    .stack-card h3 { font-family: var(--mono); font-size: 12px; letter-spacing: .14em; color: var(--muted); margin-bottom: 18px; }
+    .stack { display: flex; flex-wrap: wrap; gap: 10px; }
+    .stack span { font-family: var(--mono); font-size: 13px; font-weight: 600; padding: 9px 14px; border-radius: 10px; background: var(--bg); border: 1px solid var(--line); }
+    .stack-card hr { border: 0; border-top: 1px solid var(--line); margin: 26px 0; }
+    .stack-card .btn { width: 100%; justify-content: center; margin-top: 26px; }
+
+    /* ===== Case studies ===== */
+    .cases { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 52px; }
+    .case { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 32px; display: flex; flex-direction: column; gap: 18px; transition: border-color .25s, transform .25s; }
+    .case:hover { border-color: rgba(242,181,68,.5); transform: translateY(-4px); }
+    .case .tag { font-family: var(--mono); font-size: 12px; font-weight: 600; letter-spacing: .1em; color: var(--accent-2); }
+    .case h3 { font-size: 24px; font-weight: 800; letter-spacing: -0.01em; line-height: 1.2; }
+    .case .sub { color: var(--muted); margin-top: -10px; }
+    .case ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .case li { color: var(--muted); font-size: 15px; padding-left: 18px; position: relative; }
+    .case li::before { content: ""; position: absolute; left: 0; top: 10px; width: 6px; height: 6px; border-radius: 2px; background: var(--accent); }
+    .case li b { color: var(--text); font-weight: 700; }
+    .metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .metric { background: var(--bg); border: 1px solid var(--line); border-radius: 14px; padding: 14px; }
+    .metric b { font-size: 24px; font-weight: 800; color: var(--accent); display: block; line-height: 1.1; }
+    .metric span { font-size: 12px; color: var(--muted); }
+    .tools { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 6px; }
+    .tools span { font-family: var(--mono); font-size: 12px; padding: 5px 10px; border-radius: 8px; background: var(--bg); border: 1px solid var(--line); color: var(--muted); }
+    .case.soon { border-style: dashed; background: transparent; }
+    .status { align-self: flex-start; font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: .12em; padding: 5px 10px; border-radius: 999px; background: rgba(252,217,138,.12); color: var(--accent-2); }
+
+    /* ===== Experience ===== */
+    .timeline { margin-top: 52px; border-left: 1px solid var(--line); margin-left: 6px; }
+    .role { position: relative; padding: 0 0 40px 36px; display: grid; grid-template-columns: 200px 1fr; gap: 24px; }
+    .role:last-child { padding-bottom: 0; }
+    .role::before { content: ""; position: absolute; left: -7px; top: 6px; width: 13px; height: 13px; border-radius: 50%; background: var(--bg); border: 2px solid var(--line); }
+    .role.now::before { border-color: var(--accent); background: var(--accent); box-shadow: 0 0 0 5px rgba(242,181,68,.18); }
+    .role .date { font-family: var(--mono); font-size: 13px; color: var(--muted); padding-top: 3px; }
+    .role.now .date { color: var(--accent); }
+    .role h3 { font-size: 20px; font-weight: 800; }
+    .role .co { color: var(--accent-2); font-weight: 600; font-size: 15px; }
+    .role p { color: var(--muted); margin-top: 8px; font-size: 15px; }
+
+    /* ===== Education ===== */
+    .edu { margin-top: 56px; background: linear-gradient(135deg, rgba(242,181,68,.12), rgba(252,217,138,.08)); border: 1px solid var(--line); border-radius: 20px; padding: 32px; display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; }
+    .edu h3 { font-size: 22px; font-weight: 800; margin: 8px 0 4px; }
+    .edu p { color: var(--muted); }
+    .edu .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .edu .chips span { font-size: 13px; padding: 6px 12px; border-radius: 999px; background: rgba(11,17,32,.6); border: 1px solid var(--line); }
+    .edu .when { font-family: var(--mono); font-size: 13px; color: var(--accent); white-space: nowrap; }
+
+    /* ===== Contact ===== */
+    .contact { text-align: center; background: var(--bg-2); border-top: 1px solid var(--line); }
+    .contact h2 { font-size: clamp(40px, 6vw, 64px); font-weight: 800; letter-spacing: -0.035em; line-height: 1.05; margin: 16px 0 18px; }
+    .contact .lead { margin: 0 auto; }
+    .emails { display: flex; justify-content: center; gap: 12px 28px; flex-wrap: wrap; margin-top: 30px; font-family: var(--mono); font-size: 15px; }
+    .emails a { border-bottom: 1px solid var(--line); padding-bottom: 2px; }
+    .emails a:hover { color: var(--accent); border-color: var(--accent); }
+    .contact .ctas { justify-content: center; }
+
+    footer { border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; font-family: var(--mono); }
+    footer .container { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 28px; padding-bottom: 28px; }
+
+    /* ===== Tablet & mobile ===== */
+    @media (max-width: 960px) {
+      .hero .container, .about-grid { grid-template-columns: 1fr; }
+      .photo { max-width: 360px; }
+      .photo .kpi { left: 16px; }
+      .cases { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      section { padding: 80px 0; }
+      .hero { padding: 56px 0 72px; }
+      .links { display: none; }
+      .role { grid-template-columns: 1fr; gap: 4px; padding-left: 26px; }
+      .metrics { grid-template-columns: 1fr 1fr 1fr; }
+      .metric b { font-size: 20px; }
+      .edu { grid-template-columns: 1fr; }
+      .case, .stack-card, .edu { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= NAV ================= -->
+  <nav>
+    <div class="container">
+      <a href="#" class="logo">MAXCENE<span>.</span>DA SILVA</a>
+      <div class="links">
+        <a href="#about">About</a>
+        <a href="#work">Case Studies</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a href="resume.pdf" class="btn btn-primary" target="_blank" rel="noopener" style="padding:10px 18px;">Resume</a>
+    </div>
+  </nav>
+
+  <!-- ================= HERO ================= -->
+  <header class="hero">
+    <div class="container">
+      <div>
+        <span class="badge"><span class="pulse"></span>OPEN TO REMOTE DATA ROLES</span>
+        <h1>Junior Data Analyst &amp; <span class="gradient">Reporting Specialist.</span></h1>
+        <p class="intro">Data Analytics student turning campaign, customer and performance data into clear reports and actionable insights, working remotely with teams worldwide.</p>
+        <div class="ctas">
+          <a href="#work" class="btn btn-primary">View Case Studies →</a>
+          <a href="https://www.linkedin.com/in/maxcene-da-silva-588aa9237" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
+        </div>
+        <div class="facts">
+          <div><small>BASED IN</small><strong>Cairo, Egypt</strong></div>
+          <div><small>NATIONALITY</small><strong>South African</strong></div>
+          <div><small>CURRENTLY</small><strong>Marketing Intern @ SABMR</strong></div>
+          <div><small>STUDYING</small><strong>Data Analytics, Eduvos</strong></div>
+        </div>
+      </div>
+      <div class="photo">
+        <img src="images/me.jpg" alt="Maxcene Da Silva" />
+        <div class="kpi"><b>+167%</b><span>Growth in new follows · SABMR</span></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= ABOUT ================= -->
+  <section class="about" id="about">
+    <div class="container about-grid">
+      <div>
+        <span class="label">About me</span>
+        <h2 class="h2">From customer insight to data insight.</h2>
+        <p>I'm completing a <strong>Higher Certificate in Information Systems specialising in Data Analytics</strong> at Eduvos University, building skills in Python, SQL (SSMS) and data visualization.</p>
+        <p>Before data, I spent years in hospitality and customer service across South Africa and Qatar, where I <strong>tracked engagement metrics, analysed customer feedback and produced monthly performance reports</strong> for management.</p>
+        <p>Today I analyse social media and campaign performance for the <strong>South African Bone Marrow Registry</strong>, a non-profit that recruits bone marrow donors, presenting findings that support data-driven decisions.</p>
+      </div>
+      <div class="stack-card">
+        <h3>PRIMARY TECH STACK</h3>
+        <div class="stack"><span>Python</span><span>Pandas</span><span>NumPy</span><span>SQL (SSMS)</span><span>Excel</span><span>AWS</span></div>
+        <hr />
+        <h3>ANALYTICS SKILLS</h3>
+        <div class="stack"><span>Data Cleaning</span><span>Visualization</span><span>Dashboards</span><span>Trend Analysis</span><span>Reporting</span></div>
+        <a href="resume.pdf" target="_blank" rel="noopener" class="btn btn-primary">Download Full Resume ↓</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CASE STUDIES ================= -->
+  <section id="work">
+    <div class="container">
+      <span class="label">Case studies</span>
+      <h2 class="h2">Selected work</h2>
+      <p class="lead">Real analysis from my current role, plus the portfolio projects I'm building next.</p>
+
+      <div class="cases">
+        <article class="case">
+          <span class="tag">CAMPAIGN ANALYTICS · NON-PROFIT</span>
+          <h3>SABMR Social Media Performance</h3>
+          <p class="sub">Measuring what drives donor awareness and engagement.</p>
+          <ul>
+            <li><b>Problem:</b> The registry needed to understand which content and channels were growing its audience.</li>
+            <li><b>Approach:</b> Tracked key metrics across platforms, analysed engagement trends and audience behaviour, and reported findings to stakeholders.</li>
+            <li><b>Impact:</b> Insights guided the social media refresh and campaign planning.</li>
+          </ul>
+          <div class="metrics">
+            <div class="metric"><b>+167%</b><span>New follows growth</span></div>
+            <div class="metric"><b>176</b><span>New follows (Instagram)</span></div>
+            <div class="metric"><b>3.2K</b><span>Lifetime followers</span></div>
+          </div>
+          <div class="tools"><span>Excel</span><span>Meta Business Suite</span><span>Reporting</span></div>
+        </article>
+
+        <article class="case">
+          <span class="tag">MULTI-PLATFORM ANALYSIS</span>
+          <h3>Social Media Performance Analysis</h3>
+          <p class="sub">YouTube, TikTok and WhatsApp Channel data.</p>
+          <ul>
+            <li><b>Analysis:</b> Measured engagement rates, audience interactions and content performance across three platforms.</li>
+            <li><b>Output:</b> Built reports and visualizations to identify growth opportunities.</li>
+            <li><b>Outcome:</b> Presented findings and recommendations to support marketing objectives.</li>
+          </ul>
+          <div class="tools"><span>Excel</span><span>Data Visualization</span><span>Trend Analysis</span></div>
+        </article>
+
+        <!-- When a project is finished, replace "In development" with real results and add a link to the GitHub repo -->
+        <article class="case soon">
+          <span class="status">IN DEVELOPMENT</span>
+          <h3>SQL Sales &amp; Customer Analysis</h3>
+          <p class="sub">Querying a relational database in SSMS with joins, aggregations and CTEs to answer business questions.</p>
+          <div class="tools"><span>SQL (SSMS)</span><span>Database Design</span></div>
+        </article>
+
+        <article class="case soon">
+          <span class="status">IN DEVELOPMENT</span>
+          <h3>Python Data Cleaning &amp; Insights</h3>
+          <p class="sub">Cleaning a messy real-world dataset with Pandas and NumPy, then visualizing key trends.</p>
+          <div class="tools"><span>Python</span><span>Pandas</span><span>NumPy</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EXPERIENCE ================= -->
+  <section class="about" id="experience">
+    <div class="container">
+      <span class="label">Experience</span>
+      <h2 class="h2">Where I've worked</h2>
+
+      <div class="timeline">
+        <div class="role now">
+          <span class="date">JUL 2026 – PRESENT</span>
+          <div>
+            <h3>Marketing Intern (Remote)</h3>
+            <div class="co">South African Bone Marrow Registry</div>
+            <p>Analyse social media and campaign performance data, track key metrics across platforms, and present performance reports to stakeholders.</p>
+          </div>
+        </div>
+        <div class="role">
+          <span class="date">AUG 2025 – DEC 2025</span>
+          <div>
+            <h3>Guest Relations Coordinator</h3>
+            <div class="co">Cape Town Holiday Apartments</div>
+            <p>Managed customer data and service reporting; analysed guest feedback to identify service improvement opportunities.</p>
+          </div>
+        </div>
+        <div class="role">
+          <span class="date">APR 2024 – MAY 2025</span>
+          <div>
+            <h3>Customer Engagement &amp; Training Manager</h3>
+            <div class="co">Source Hospitality Consultancy</div>
+            <p>Tracked customer engagement metrics and satisfaction trends; produced performance and training reports and SOPs.</p>
+          </div>
+        </div>
+        <div class="role">
+          <span class="date">JAN 2022 – APR 2024</span>
+          <div>
+            <h3>Lead Butler Service Desk Agent</h3>
+            <div class="co">St. Regis Marsa Arabia Island</div>
+            <p>Monitored service requests and response performance; generated monthly reports supporting service quality.</p>
+          </div>
+        </div>
+        <div class="role">
+          <span class="date">MAR 2020 – APR 2021</span>
+          <div>
+            <h3>Customer Service Representative</h3>
+            <div class="co">Lead Capital Group</div>
+            <p>Managed customer records, produced operational reports and identified recurring customer issues for management.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="edu">
+        <div>
+          <span class="label">Education</span>
+          <h3>Higher Certificate in Information Systems (Data Analytics)</h3>
+          <p>Eduvos University · Cape Town, South Africa</p>
+          <div class="chips"><span>Python Programming</span><span>SQL (SSMS)</span><span>Database Concepts</span><span>Software Engineering</span><span>AWS Cloud Foundations</span><span>Program Design</span></div>
+        </div>
+        <span class="when">NOV 2025 – NOV 2026</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <span class="label">Contact</span>
+      <h2>Let's <span class="gradient">connect.</span></h2>
+      <p class="lead">Open to remote junior data analyst, reporting and insights roles worldwide.</p>
+      <div class="emails">
+        <a href="mailto:maxcenedasilva@gmail.com">maxcenedasilva@gmail.com</a>
+        <a href="mailto:maxcened@gmail.com">maxcened@gmail.com</a>
+      </div>
+      <div class="ctas" style="margin-top:36px;">
+        <a href="mailto:maxcenedasilva@gmail.com" class="btn btn-primary">Email me</a>
+        <a href="https://www.linkedin.com/in/maxcene-da-silva-588aa9237" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
+        <a href="resume.pdf" target="_blank" rel="noopener" class="btn btn-ghost">Resume (PDF)</a>
+        <a href="https://github.com/maxcenedasilva-spec" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <span>© 2026 MAXCENE DA SILVA</span>
+      <span>BASED IN CAIRO, EGYPT · SOUTH AFRICAN · WORKING REMOTELY WORLDWIDE</span>
+    </div>
+  </footer>
+
+</body>
+</html>
